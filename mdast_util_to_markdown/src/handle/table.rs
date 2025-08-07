@@ -199,10 +199,18 @@ fn collect_text_content(nodes: &[Node], result: &mut String) {
     }
 }
 
-/// Get the display width of a string, accounting for Unicode
+/// Get the display width of a string, accounting for Unicode when feature is enabled
 fn display_width(s: &str) -> usize {
-    use unicode_width::UnicodeWidthStr;
-    UnicodeWidthStr::width(s)
+    #[cfg(feature = "unicode-width")]
+    {
+        use unicode_width::UnicodeWidthStr;
+        UnicodeWidthStr::width(s)
+    }
+    #[cfg(not(feature = "unicode-width"))]
+    {
+        // Use character count instead of byte count for better default behavior
+        s.chars().count()
+    }
 }
 
 /// Render the delimiter row with alignment markers
