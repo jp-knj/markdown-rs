@@ -1,4 +1,4 @@
-# markdown-rs WASM Bindings
+# @wooorm/markdown-wasm
 
 WebAssembly bindings for [markdown-rs](https://github.com/wooorm/markdown-rs).
 
@@ -14,13 +14,13 @@ WebAssembly bindings for [markdown-rs](https://github.com/wooorm/markdown-rs).
 ## Installation
 
 ```bash
-pnpm add markdown-rs-wasm
+npm install @wooorm/markdown-wasm
 ```
 
 ## Usage
 
 ```javascript
-import { toHtml, toHtmlWithOptions } from 'markdown-rs-wasm';
+import { toHtml, toHtmlWithOptions } from '@wooorm/markdown-wasm';
 
 // Convert markdown to HTML
 const html = await toHtml('# Hello World');
