@@ -1,19 +1,24 @@
 {
-  "name": "markdown-rs-wasm",
+  "name": "@wooorm/markdown-wasm",
   "version": "0.0.1",
   "description": "WebAssembly bindings for markdown-rs",
   "type": "module",
-  "exports": "./lib/index.mjs",
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.mjs"
+    }
+  },
   "files": [
     "lib/",
     "pkg/",
-    "README.md"
+    "README.md",
+    "LICENSE"
   ],
   "scripts": {
     "build": "wasm-pack build --target web --out-dir pkg && mv pkg/markdown_rs_wasm.js pkg/markdown_rs_wasm.mjs",
     "test": "node --test test/index.test.mjs",
-    "example:basic": "node examples/basic.mjs",
-    "example:options": "node examples/with-options.mjs"
+    "examples": "node examples/basic.mjs && node examples/with-options.mjs"
   },
   "keywords": [
     "markdown",
@@ -26,6 +31,6 @@
   "license": "MIT",
   "repository": "https://github.com/wooorm/markdown-rs",
   "engines": {
-    "node": ">=16.0.0"
+    "node": ">=18"
   }
 }
